@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>雅思7.0备考工作台 · 16周计划</title>
+<style>
+:root{
+  --bg:#f5f6fa; --card:#ffffff; --line:#e5e7eb; --text:#1f2430; --muted:#6b7280;
+  --brand:#4f46e5; --brand-soft:#eef2ff;
+  --vocab:#0d9488; --listen:#2563eb; --read:#7c3aed; --write:#d97706; --speak:#e11d48;
+  --good:#16a34a; --good-soft:#ecfdf5;
+}
+*{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; line-height:1.6; padding-bottom:72px}
+a{color:var(--brand)}
+.wrap{max-width:860px;margin:0 auto;padding:0 14px}
+header{background:linear-gradient(135deg,#4338ca,#4f46e5 60%,#6d28d9); color:#fff; padding:20px 0 18px}
+header .wrap{display:flex;align-items:center;justify-content:space-between}
+header h1{font-size:19px;margin:0;font-weight:700}
+header .sub{font-size:12px;opacity:.85;margin-top:2px}
+.badge{background:rgba(255,255,255,.18);padding:4px 10px;border-radius:20px;font-size:12px;white-space:nowrap}
+nav.tabs{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--line);display:flex;z-index:50;padding-bottom:env(safe-area-inset-bottom)}
+nav.tabs button{flex:1;background:none;border:none;padding:9px 2px 7px;font-size:11px;color:var(--muted);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px}
+nav.tabs button .ic{font-size:20px;line-height:1}
+nav.tabs button.on{color:var(--brand);font-weight:600}
+main{padding-top:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+.card h2{font-size:15px;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+.card h2 .dot{width:10px;height:10px;border-radius:3px;display:inline-block}
+.sec-title{font-size:13px;color:var(--muted);margin:20px 0 8px;font-weight:600}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(min-width:720px){.grid{grid-template-columns:repeat(4,1fr)}}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:20px;font-size:12px;background:var(--brand-soft);color:var(--brand);margin:0 4px 6px 0}
+.tag{font-size:11px;padding:2px 8px;border-radius:6px;font-weight:600}
+.btn{display:inline-flex;align-items:center;gap:6px;border:none;border-radius:10px;padding:10px 16px;font-size:14px;font-weight:600;cursor:pointer;background:var(--brand);color:#fff}
+.btn.ghost{background:#fff;color:var(--text);border:1px solid var(--line)}
+.btn.sm{padding:7px 12px;font-size:13px}
+.btn:active{transform:scale(.97)}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.muted{color:var(--muted);font-size:12px}
+.task{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+.task:last-child{border-bottom:none}
+.task .ck{width:22px;height:22px;border:2px solid #cbd5e1;border-radius:6px;flex:0 0 22px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff;margin-top:2px}
+.task.done .ck{background:var(--good);border-color:var(--good)}
+.task.done .t-body .t-title{color:var(--muted);text-decoration:line-through}
+.task .t-title{font-size:14px;font-weight:600}
+.task .t-desc{font-size:12.5px;color:var(--muted);margin-top:1px}
+.task .t-tag{font-size:10px;padding:1px 6px;border-radius:5px;margin-right:6px;color:#fff;vertical-align:1px}
+.bar{height:8px;background:#eef0f4;border-radius:10px;overflow:hidden;margin:6px 0}
+.bar>i{display:block;height:100%;background:var(--brand);border-radius:10px;transition:width .3s}
+.stat-num{font-size:26px;font-weight:800;line-height:1}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.hidden{display:none!important}
+.flash{perspective:1000px;cursor:pointer;min-height:220px;position:relative}
+.flash .f-inner{position:relative;width:100%;height:100%;transition:transform .45s;transform-style:preserve-3d;min-height:220px}
+.flash.flip .f-inner{transform:rotateY(180deg)}
+.flash .face{position:absolute;inset:0;backface-visibility:hidden;border-radius:14px;padding:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid var(--line);background:#fff}
+.flash .back{transform:rotateY(180deg);background:#f8fafc}
+.flash .w{font-size:30px;font-weight:800;color:var(--vocab)}
+.flash .cn{font-size:20px;margin-top:8px}
+.flash .eg{font-size:13px;color:var(--muted);margin-top:12px;font-style:italic}
+.opt{display:block;width:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:6px 0;cursor:pointer;font-size:14px}
+.opt.sel{background:var(--brand-soft);border-color:var(--brand);color:var(--brand);font-weight:600}
+.opt.right{background:var(--good-soft);border-color:var(--good);color:var(--good)}
+.opt.wrong{background:#fef2f2;border-color:#ef4444;color:#ef4444}
+.answer{background:var(--good-soft);border-left:3px solid var(--good);padding:10px 12px;border-radius:8px;font-size:13px;margin-top:10px}
+.tip{background:#fffbeb;border-left:3px solid #f59e0b;padding:10px 12px;border-radius:8px;font-size:13px;margin:10px 0}
+code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#f1f5f9;padding:1px 5px;border-radius:5px;font-size:12.5px}
+select,input[type=date]{padding:9px 10px;border:1px solid var(--line);border-radius:10px;font-size:14px;background:#fff;color:var(--text);width:100%}
+textarea{width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;font-size:12px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#fff;color:var(--text);min-height:72px;resize:vertical;line-height:1.5;word-break:break-all}
+.note{font-size:12px;color:var(--muted);line-height:1.6}
+details{border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin:8px 0;background:#fff}
+summary{cursor:pointer;font-weight:600;font-size:13.5px;color:var(--text)}
+.phase-head{font-size:12px;font-weight:700;color:var(--muted);margin:18px 0 6px;letter-spacing:.5px}
+.weekline{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px dashed var(--line);font-size:13.5px}
+.mod-pill{width:10px;height:10px;border-radius:3px;display:inline-block;margin-right:4px;vertical-align:-1px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div>
+      <h1>🎯 雅思 7.0 备考工作台</h1>
+      <div class="sub">16 周 · 碎片化每日任务 · 听说读写+单词</div>
+    </div>
+    <div class="badge" id="headerBadge">—</div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <!-- 今日任务 -->
+    <section id="view-today">
+      <div class="card">
+        <div class="row">
+          <div>
+            <h2 style="margin-bottom:2px">📅 今日任务</h2>
+            <div class="muted" id="todayLabel">—</div>
+          </div>
+          <div style="text-align:right">
+            <div class="stat-num" id="todayPct">0%</div>
+            <div class="muted">今日完成</div>
+          </div>
+        </div>
+        <div class="bar"><i id="todayBar" style="width:0%"></i></div>
+        <div class="row" style="margin-top:10px">
+          <button class="btn ghost sm" onclick="shiftDay(-1)">‹ 前一天</button>
+          <button class="btn ghost sm" onclick="shiftDay(1)">后一天 ›</button>
+          <button class="btn sm" onclick="goToday()">回到今天</button>
+        </div>
+      </div>
+      <div id="todayTasks"></div>
+      <div class="card" id="tipCard"></div>
+    </section>
+
+    <!-- 单词 -->
+    <section id="view-vocab" class="hidden">
+      <div class="card">
+        <h2><span class="dot" style="background:var(--vocab)"></span>单词记忆（打卡 + 核心词）</h2>
+        <div class="row">
+          <div class="note">每天用手机单词 App 背 <b>20 个新词</b>，再复习本工作台当周 <b>20 个核心高频词</b>（闪卡下方）。</div>
+        </div>
+        <div class="row" style="margin-top:10px">
+          <label class="note">选择周次（对应备考周）</label>
+        </div>
+        <select id="vocabWeek" onchange="renderVocab()"></select>
+        <div class="bar" style="margin-top:12px"><i id="vocabBar" style="width:0%"></i></div>
+        <div class="muted" id="vocabCount">—</div>
+        <div class="row" style="margin-top:10px">
+          <button class="btn sm" onclick="prevWord()">上一个</button>
+          <button class="btn sm ghost" onclick="toggleVocabKnown()" id="knownBtn">标记：已掌握</button>
+          <button class="btn sm" onclick="nextWord()">下一个</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="flash" id="flash" onclick="flip()">
+          <div class="f-inner" id="flashInner">
+            <div class="face"><div class="w" id="fw">word</div><div class="muted" style="margin-top:6px">点击卡片查看释义</div></div>
+            <div class="face back"><div class="cn" id="fcn">释义</div><div class="eg" id="feg">例句</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h2 style="font-size:14px">📚 本周核心词列表</h2>
+        <div id="vocabList" style="font-size:13px"></div>
+      </div>
+    </section>
+
+    <!-- 听力 -->
+    <section id="view-listen" class="hidden">
+      <div class="card">
+        <h2><span class="dot" style="background:var(--listen)"></span>听力训练 · 方法与每日任务</h2>
+        <p class="note">没有真题音频时，用以下免费资源训练：<b>BBC 6 Minute English</b>、<b>TED Talks</b>、<b>每日英语听力 App</b>（搜「剑桥雅思听力」）、<b>VOA 慢速英语</b>。核心方法：<b>精听 + 泛听 + 跟读</b>。</p>
+        <details><summary>✅ 精听「五步法」（每天选 1 段 3–5 分钟音频）</summary>
+          <ol style="font-size:13px;margin:8px 0;padding-left:20px">
+            <li>盲听 1 遍：抓主旨，不看字幕</li>
+            <li>逐句听写：听一句停一下写下来（可听 3 遍）</li>
+            <li>对照原文改错，标出没听出的词/连读</li>
+            <li>跟读模仿：逐句跟读，模仿语音语调</li>
+            <li>复述：不看书用自己的话复述大意</li>
+          </ol>
+        </details>
+        <details><summary>⚠️ 雅思听力四大题型与套路</summary>
+          <div style="font-size:13px">
+            <p><b>Section 1/2（日常场景）</b>：抓人名/数字/地址/日期，注意拼写。</p>
+            <p><b>Section 3/4（学术场景）</b>：抓同义替换、转折词（but/however）、信号词（firstly, in addition, therefore）。</p>
+            <p><b>地图题</b>：先看方位词（north/east/opposite/next to），标好起始点。</p>
+            <p><b>填空题</b>：预判词性（名词/数字/动词），注意单复数。</p>
+          </div>
+        </details>
+      </div>
+      <div class="card">
+        <h2 style="font-size:14px">🎧 本周听力任务</h2>
+        <div id="listenPlan"></div>
+      </div>
+      <div class="card">
+        <h2 style="font-size:14px">📝 每日听力打卡</h2>
+        <div id="listenLog"></div>
+      </div>
+    </section>
+
+    <!-- 阅读 -->
+    <section id="view-read" class="hidden">
+      <div class="card">
+        <h2><span class="dot" style="background:var(--read)"></span>阅读训练 · 内置文章</h2>
+        <p class="note">雅思阅读 60 分钟做 3 篇文章共 40 题。技巧：<b>先看题再读文</b>、<b>找关键词定位</b>、<b>同义替换</b>是核心。每天 1 篇，限时 15–18 分钟。</p>
+      </div>
+      <div id="readList"></div>
+      <div id="readDetail" class="hidden"></div>
+    </section>
+
+    <!-- 写作 -->
+    <section id="view-write" class="hidden">
+      <div class="card">
+        <h2><span class="dot" style="background:var(--write)"></span>写作训练 · 题目 + 框架 + 范文</h2>
+        <p class="note">Task 1（小作文，20 分钟 150 词）+ Task 2（大作文，40 分钟 250 词）。评分：任务回应 / 连贯衔接 / 词汇丰富度 / 语法准确度。</p>
+      </div>
+      <div id="writeList"></div>
+      <div id="writeDetail" class="hidden"></div>
+    </section>
+
+    <!-- 口语 -->
+    <section id="view-speak" class="hidden">
+      <div class="card">
+        <h2><span class="dot" style="background:var(--speak)"></span>口语训练 · 题目 + 思路 + 示范</h2>
+        <p class="note">Part 1（4–5 分钟自我介绍+日常话题）、Part 2（1 分钟准备+2 分钟独白）、Part 3（4–5 分钟深入讨论）。每天用「录音法」练：<b>说→录音→回听→重说</b>。</p>
+      </div>
+      <div class="sec-title">Part 1 · 日常话题</div>
+      <div id="speak1"></div>
+      <div class="sec-title">Part 2 · 主题独白</div>
+      <div id="speak2"></div>
+      <div class="sec-title">Part 3 · 深入讨论</div>
+      <div id="speak3"></div>
+    </section>
+
+    <!-- 计划 -->
+    <section id="view-plan" class="hidden">
+      <div class="card">
+        <h2>🗓️ 16 周总计划</h2>
+        <p class="note">四个阶段：<b>① 基础巩固（W1–4）→ ② 强化提升（W5–8）→ ③ 真题冲刺（W9–12）→ ④ 模考查漏（W13–16）</b>。</p>
+        <div class="row" style="margin-top:8px">
+          <label class="muted">备考开始日期</label>
+          <input type="date" id="startDate" onchange="setStart()" style="width:auto">
+        </div>
+      </div>
+      <div id="planBody"></div>
+    </section>
+
+    <!-- 统计 -->
+    <section id="view-stats" class="hidden">
+      <div class="card">
+        <h2>📊 学习统计</h2>
+        <div class="stat-grid">
+          <div><div class="stat-num" id="stTotal">0</div><div class="muted">累计完成任务</div></div>
+          <div><div class="stat-num" id="stStreak">0</div><div class="muted">连续打卡(天)</div></div>
+          <div><div class="stat-num" id="stWords">0</div><div class="muted">已掌握核心词</div></div>
+        </div>
+        <div class="bar" style="margin-top:14px"><i id="stBar" style="width:0%"></i></div>
+        <div class="muted" id="stOverall">—</div>
+      </div>
+      <div class="card">
+        <h2 style="font-size:14px">各模块完成度</h2>
+        <div id="stModules"></div>
+      </div>
+      <div class="card">
+        <h2 style="font-size:14px">🔄 导出 / 导入进度（手机 ⇄ 电脑同步）</h2>
+        <p class="note">打卡进度存在浏览器本地、<b>不会自动同步</b>。换设备时：在一台设备点「导出」复制进度码，发到另一台设备「导入」即可，进度会<b>合并</b>、不会覆盖。</p>
+        <button class="btn sm" onclick="exportProgress()">📤 导出进度码</button>
+        <textarea id="exportBox" readonly placeholder="点上方「导出」后，进度码会出现在这里"></textarea>
+        <div id="syncMsg" class="muted" style="margin:6px 0"></div>
+        <div class="muted" style="margin:6px 0">↑ 复制上面整段进度码（手机上长按 → 全选 → 复制），发到另一台设备。</div>
+        <button class="btn sm ghost" onclick="importProgress()">📥 导入进度码</button>
+        <textarea id="importBox" placeholder="在这里粘贴另一台设备的进度码，再点「导入」"></textarea>
+      </div>
+      <div class="card">
+        <h2 style="font-size:14px">🗑️ 数据管理</h2>
+        <button class="btn ghost sm" onclick="resetAll()">清空全部进度（重新开始）</button>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<nav class="tabs" id="tabs">
+  <button data-v="today" class="on"><span class="ic">📅</span>今日</button>
+  <button data-v="vocab"><span class="ic">📖</span>单词</button>
+  <button data-v="listen"><span class="ic">🎧</span>听力</button>
+  <button data-v="read"><span class="ic">📚</span>阅读</button>
+  <button data-v="write"><span class="ic">✍️</span>写作</button>
+  <button data-v="speak"><span class="ic">🗣️</span>口语</button>
+  <button data-v="plan"><span class="ic">🗓️</span>计划</button>
+  <button data-v="stats"><span class="ic">📊</span>统计</button>
+</nav>
+
+<script>
+/* ============ 数据 ============ */
+// 词汇：16 周 × 20 核心高频词 [word, 中文, 例句]
+const VOCAB = [
+ {t:"W1 · 学术高频动词", w:[
+  ["analyse","分析","Scientists analyse data to find patterns."],
+  ["assess","评估","We need to assess the risks first."],
+  ["assume","假设","Don't assume the answer is obvious."],
+  ["benefit","受益；好处","Regular exercise benefits your health."],
+  ["consist","组成","The course consists of four modules."],
+  ["contribute","贡献；促成","Hard work contributes to success."],
+  ["demonstrate","证明；演示","The study demonstrates a clear link."],
+  ["establish","建立；确立","The company established a new branch."],
+  ["estimate","估计","Experts estimate the cost at 1 million."],
+  ["identify","识别；确认","Can you identify the main cause?"],
+  ["indicate","表明；指示","The results indicate a positive trend."],
+  ["maintain","维持；坚持","It is important to maintain a balance."],
+  ["obtain","获得","She obtained a scholarship last year."],
+  ["occur","发生","Accidents occur more often at night."],
+  ["provide","提供","The library provides free access."],
+  ["require","需要；要求","The job requires good English."],
+  ["respond","回应","He responded to the email quickly."],
+  ["signify","意味着；表示","A red light signifies danger."],
+  ["sustain","维持；支撑","We must sustain economic growth."],
+  ["vary","变化；不同","Prices vary from shop to shop."] ]},
+ {t:"W2 · 教育", w:[
+  ["curriculum","课程","The school revised its curriculum."],
+  ["literacy","读写能力","Adult literacy is improving."],
+  ["tuition","学费","Tuition fees have risen sharply."],
+  ["scholarship","奖学金","She won a full scholarship."],
+  ["academic","学术的","His academic performance is excellent."],
+  ["discipline","纪律；学科","Physics is a tough discipline."],
+  ["enrol","注册；入学","He enrolled in a language course."],
+  ["compulsory","义务的","Education is compulsory until 16."],
+  ["vocational","职业的","Vocational training prepares students for jobs."],
+  ["pedagogy","教学法","Modern pedagogy emphasises student activity."],
+  ["assessment","评估","Assessment includes exams and essays."],
+  ["mentor","导师","A good mentor can guide your career."],
+  ["campus","校园","The campus has a large library."],
+  ["graduate","毕业；毕业生","She graduated with honours."],
+  ["undergraduate","本科生","He is an undergraduate in engineering."],
+  ["postgraduate","研究生","She is doing a postgraduate degree."],
+  ["thesis","论文","He is writing his master's thesis."],
+  ["lecture","讲座；授课","The lecture lasted two hours."],
+  ["seminar","研讨会","We discussed the topic in a seminar."],
+  ["literate","有文化的；识字的","A literate workforce drives growth."] ]},
+ {t:"W3 · 科技", w:[
+  ["innovation","创新","Innovation drives economic progress."],
+  ["automation","自动化","Automation is replacing manual jobs."],
+  ["artificial intelligence","人工智能","AI is changing every industry."],
+  ["breakthrough","突破","Scientists made a major breakthrough."],
+  ["cutting-edge","前沿的","The lab uses cutting-edge technology."],
+  ["device","设备","Mobile devices are everywhere."],
+  ["digital","数字的","We live in a digital age."],
+  ["efficiency","效率","New machines improve efficiency."],
+  ["algorithm","算法","The algorithm learns from data."],
+  ["data","数据","Data privacy is a growing concern."],
+  ["robot","机器人","Robots work in factories."],
+  ["software","软件","He develops software for banks."],
+  ["technological","技术的","Technological change is rapid."],
+  ["virtual","虚拟的","Virtual meetings save time."],
+  ["gadget","小装置","People love the latest gadgets."],
+  ["interface","界面","The interface is easy to use."],
+  ["network","网络","The network connects all offices."],
+  ["upgrade","升级","You should upgrade your system."],
+  ["wireless","无线的","Wireless charging is convenient."],
+  ["cyber","网络的","Cyber attacks are increasing."] ]},
+ {t:"W4 · 环境与气候", w:[
+  ["climate","气候","Climate change is a global threat."],
+  ["emission","排放","Factories cut carbon emissions."],
+  ["pollution","污染","Air pollution harms our health."],
+  ["sustainable","可持续的","We need sustainable development."],
+  ["renewable","可再生的","Solar is a renewable energy."],
+  ["biodiversity","生物多样性","Deforestation threatens biodiversity."],
+  ["conservation","保护","Wildlife conservation is vital."],
+  ["ecosystem","生态系统","The ecosystem is fragile."],
+  ["deforestation","森林砍伐","Deforestation accelerates global warming."],
+  ["greenhouse","温室","Greenhouse gases trap heat."],
+  ["degrade","退化；降低","Soil quality is degrading."],
+  ["contaminate","污染","Chemicals contaminated the river."],
+  ["preserve","保护；保存","We must preserve natural habitats."],
+  ["recycle","回收","We should recycle more waste."],
+  ["scarce","稀缺的","Water is scarce in deserts."],
+  ["deplete","耗尽","Overfishing depletes fish stocks."],
+  ["fossil fuel","化石燃料","We depend too much on fossil fuels."],
+  ["carbon footprint","碳足迹","Flying increases your carbon footprint."],
+  ["habitat","栖息地","The panda's habitat is shrinking."],
+  ["severe","严重的","Severe droughts hit the region."] ]},
+ {t:"W5 · 健康与医疗", w:[
+  ["obesity","肥胖","Obesity is a public health issue."],
+  ["nutrition","营养","Good nutrition builds strong bodies."],
+  ["sedentary","久坐的","A sedentary lifestyle causes disease."],
+  ["epidemic","流行病","The flu epidemic spread quickly."],
+  ["immunity","免疫力","Sleep boosts your immunity."],
+  ["diagnose","诊断","Doctors diagnosed the illness early."],
+  ["prescribe","开处方","The doctor prescribed antibiotics."],
+  ["therapy","治疗","Physical therapy eased her pain."],
+  ["chronic","慢性的","Chronic stress damages health."],
+  ["acute","急性的","He felt an acute pain."],
+  ["symptom","症状","A cough is a common symptom."],
+  ["prevention","预防","Prevention is better than cure."],
+  ["well-being","健康；幸福","Exercise improves mental well-being."],
+  ["hygiene","卫生","Good hygiene prevents infection."],
+  ["inoculate/vaccinate","接种疫苗","Children are vaccinated against measles."],
+  ["addiction","成瘾","Smartphone addiction is rising."],
+  ["mental health","心理健康","Schools should support mental health."],
+  ["remedy","疗法；补救","Sleep is a remedy for tiredness."],
+  ["fatal","致命的","The disease can be fatal."],
+  ["recover","康复","She recovered after surgery."] ]},
+ {t:"W6 · 城市化与基建（与你的专业相关）", w:[
+  ["urbanisation","城市化","Urbanisation is fastest in Asia."],
+  ["infrastructure","基础设施","Roads are basic infrastructure."],
+  ["underground","地下的","The city built an underground railway."],
+  ["metro/subway","地铁","The metro runs every five minutes."],
+  ["tunnel","隧道","They dug a tunnel under the river."],
+  ["excavate","挖掘","Machines excavate the earth."],
+  ["geology","地质学","Geology affects tunnel safety."],
+  ["density","密度","Population density is high downtown."],
+  ["congestion","拥堵","Traffic congestion wastes time."],
+  ["municipal","市政的","The municipal government funded the project."],
+  ["residential","住宅的","This is a residential area."],
+  ["commercial","商业的","The district has many commercial buildings."],
+  ["skyscraper","摩天大楼","Skyscrapers dominate the skyline."],
+  ["sewage","污水","The sewage system needs repair."],
+  ["drainage","排水","Poor drainage causes flooding."],
+  ["subsidence","沉降","Mining caused land subsidence."],
+  ["foundation","地基","The building needs a strong foundation."],
+  ["sustainability","可持续性","Urban sustainability is a key goal."],
+  ["relocate","搬迁","Residents were relocated for the project."],
+  ["facility","设施","The city provides sports facilities."] ]},
+ {t:"W7 · 经济与商业", w:[
+  ["economy","经济","The economy is growing slowly."],
+  ["recession","衰退","The recession cut many jobs."],
+  ["inflation","通货膨胀","Inflation erodes purchasing power."],
+  ["investment","投资","Foreign investment boosted growth."],
+  ["profit","利润","The company made a huge profit."],
+  ["revenue","收入；营收","Ad sales are the main revenue."],
+  ["commerce","商业","E-commerce is booming."],
+  ["entrepreneur","企业家","The entrepreneur started three firms."],
+  ["market","市场","The market is very competitive."],
+  ["monopoly","垄断","A monopoly harms consumers."],
+  ["demand","需求","Demand for housing is high."],
+  ["supply","供应","Supply chains were disrupted."],
+  ["consumer","消费者","Consumers prefer cheaper goods."],
+  ["budget","预算","The family kept to a strict budget."],
+  ["export","出口","The country exports rice."],
+  ["import","进口","We import oil from abroad."],
+  ["subsidy","补贴","Farmers receive a government subsidy."],
+  ["bankrupt","破产","The firm went bankrupt last year."],
+  ["prosperity","繁荣","Trade brought prosperity."],
+  ["currency","货币","The currency weakened against the dollar."] ]},
+ {t:"W8 · 政府与政策", w:[
+  ["policy","政策","The new policy affects all students."],
+  ["legislation","立法","Parliament passed the legislation."],
+  ["regulate","监管","Governments regulate food safety."],
+  ["authority","当局；权威","Local authorities manage schools."],
+  ["welfare","福利","Welfare supports the unemployed."],
+  ["taxation","税收","Taxation funds public services."],
+  ["subsidy","补贴","见 W7；政府对农民发补贴。"],
+  ["democracy","民主","Democracy depends on voting."],
+  ["election","选举","The election is next month."],
+  ["govern","治理","Elected officials govern the city."],
+  ["corruption","腐败","Corruption undermines trust."],
+  ["transparency","透明度","Transparency builds confidence."],
+  ["bureaucracy","官僚体制","Bureaucracy slows decisions."],
+  ["citizen","公民","Citizens have rights and duties."],
+  ["public sector","公共部门","The public sector employs many people."],
+  ["private sector","私营部门","The private sector creates jobs."],
+  ["regulation","法规","New regulations limit pollution."],
+  ["comply","遵守","Companies must comply with the law."],
+  ["reform","改革","The government launched reforms."],
+  ["subsidy-free","（留空占位）","Policy vocabulary covers many fields."] ]},
+ {t:"W9 · 文化与艺术", w:[
+  ["heritage","遗产","The old town is a world heritage site."],
+  ["tradition","传统","Traditions pass down generations."],
+  ["cultural","文化的","Cultural exchange builds understanding."],
+  ["artistic","艺术的","She has great artistic talent."],
+  ["aesthetic","审美的","The design has aesthetic value."],
+  ["masterpiece","杰作","The painting is a masterpiece."],
+  ["exhibition","展览","The exhibition drew huge crowds."],
+  ["gallery","画廊","The gallery shows modern art."],
+  ["sculpture","雕塑","A bronze sculpture stands in the square."],
+  ["literature","文学","Classic literature remains popular."],
+  ["ritual","仪式","The ritual marks the new year."],
+  ["indigenous","本土的","Indigenous cultures are worth protecting."],
+  ["folklore","民间传说","Folklore teaches moral lessons."],
+  ["diversity","多样性","Cultural diversity enriches society."],
+  ["identity","身份；认同","Language shapes identity."],
+  ["preserve","保存","We preserve old buildings."],
+  ["renovate","翻新","They renovated the museum."],
+  ["conserve","保护","We conserve historical sites."],
+  ["creative","有创造力的","Creative industries are growing."],
+  ["artefact","文物","The museum displays ancient artefacts."] ]},
+ {t:"W10 · 媒体与信息", w:[
+  ["media","媒体","Social media shapes opinions."],
+  ["journalism","新闻业","Quality journalism needs funding."],
+  ["propaganda","宣传；鼓吹","Beware of political propaganda."],
+  ["bias","偏见","Media bias can mislead readers."],
+  ["objective","客观的","Reporters should be objective."],
+  ["sensation","轰动","The story caused a sensation."],
+  ["censor","审查","Some countries censor the internet."],
+  ["broadcast","广播","The event was broadcast live."],
+  ["circulate","传播","Rumours circulated quickly."],
+  ["advertising","广告","Advertising influences spending."],
+  ["celebrity","名人","Celebrities endorse products."],
+  ["tabloid","小报","Tabloids focus on gossip."],
+  ["credible","可信的","Use credible sources."],
+  ["misleading","误导的","The headline was misleading."],
+  ["platform","平台","The platform has millions of users."],
+  ["subscription","订阅","The newspaper needs a subscription."],
+  ["content","内容","Users create most content."],
+  ["influence","影响","Influencers shape fashion."],
+  ["digital literacy","数字素养","Digital literacy is essential today."],
+  ["verify","核实","Verify facts before sharing."] ]},
+ {t:"W11 · 全球化", w:[
+  ["globalisation","全球化","Globalisation links world markets."],
+  ["multinational","跨国的","Multinational firms span continents."],
+  ["outsource","外包","Companies outsource work overseas."],
+  ["migration","移民","Migration boosts the workforce."],
+  ["integration","融合","Integration helps immigrants settle."],
+  ["interdependence","相互依存","Nations grow in interdependence."],
+  ["trade","贸易","Free trade lowers prices."],
+  ["tariff","关税","Tariffs make imports dearer."],
+  ["import/export","进出口","见 W7。"],
+  ["developing country","发展中国家","Developing countries need investment."],
+  ["developed country","发达国家","Developed countries emit more carbon."],
+  ["aid","援助","Foreign aid fights poverty."],
+  ["refugee","难民","Refugees flee war."],
+  ["diaspora","侨民社群","The diaspora sends money home."],
+  ["homogenise","同质化","Globalisation can homogenise cultures."],
+  ["cultural exchange","文化交流","见 W9。"],
+  ["supply chain","供应链","见 W7。"],
+  ["cross-border","跨境的","Cross-border travel is easier now."],
+  ["sovereignty","主权","Nations guard their sovereignty."],
+  ["emerging","新兴的","Emerging markets grow fast."] ]},
+ {t:"W12 · 犯罪与法律", w:[
+  ["crime","犯罪","Crime rates have fallen."],
+  ["offence","罪行","Shoplifting is a minor offence."],
+  ["penalty","惩罚","The penalty for speeding is a fine."],
+  ["deterrent","威慑","Harsh laws act as a deterrent."],
+  ["rehabilitate","改造；康复","Prisons should rehabilitate offenders."],
+  ["offender","罪犯","Young offenders need guidance."],
+  ["juvenile","青少年的","Juvenile crime is a concern."],
+  ["verdict","裁决","The jury reached a verdict."],
+  ["trial","审判","The trial lasted a month."],
+  ["justice","正义","Everyone deserves justice."],
+  ["legislation","立法","见 W8。"],
+  ["enforce","执行","Police enforce the law."],
+  ["convict","定罪","He was convicted of fraud."],
+  ["imprisonment","监禁","The crime carries imprisonment."],
+  ["probation","缓刑","He was released on probation."],
+  ["surveillance","监控","CCTV surveillance deters crime."],
+  ["cybercrime","网络犯罪","Cybercrime is hard to track."],
+  ["fraud","欺诈","Identity fraud is rising."],
+  ["vandalism","破坏公物","Vandalism damages public property."],
+  ["petty","轻微的","Petty theft is common in cities."] ]},
+ {t:"W13 · 工作与就业", w:[
+  ["employment","就业","Youth employment is a priority."],
+  ["unemployment","失业","Unemployment fell last quarter."],
+  ["occupation","职业","Teaching is a respected occupation."],
+  ["profession","专业职业","Medicine is a demanding profession."],
+  ["qualification","资格；学历","You need qualifications for the job."],
+  ["recruit","招聘","The firm recruits graduates."],
+  ["promotion","晋升","She earned a promotion."],
+  ["salary","薪水","The job offers a good salary."],
+  ["wage","工资","Minimum wage protects workers."],
+  ["colleague","同事","I get on well with my colleagues."],
+  ["workforce","劳动力","The workforce is ageing."],
+  ["flexible","灵活的","Flexible hours attract workers."],
+  ["remote work","远程办公","Remote work is now common."],
+  ["productivity","生产率","Training raises productivity."],
+  ["burnout","过度劳累","Long hours cause burnout."],
+  ["work-life balance","工作与生活平衡","People seek work-life balance."],
+  ["freelance","自由职业","She works as a freelance designer."],
+  ["retire","退休","He plans to retire at sixty."],
+  ["pension","养老金","The state provides a pension."],
+  ["redundancy","裁员","The factory announced redundancies."] ]},
+ {t:"W14 · 家庭与生活方式", w:[
+  ["household","家庭；住户","The average household has two children."],
+  ["upbringing","养育","A good upbringing shapes character."],
+  ["parenting","育儿","Parenting styles differ."],
+  ["nuclear family","核心家庭","The nuclear family is common today."],
+  ["extended family","大家庭","Extended families live together."],
+  ["generation","一代人","The younger generation is tech-savvy."],
+  ["lifestyle","生活方式","A healthy lifestyle prevents disease."],
+  ["leisure","休闲","People have more leisure time."],
+  ["pastime","消遣","Reading is a popular pastime."],
+  ["habit","习惯","Good habits form early."],
+  ["routine","日常；惯例","A daily routine helps you focus."],
+  ["consumption","消费","Consumption drives the economy."],
+  ["materialism","物质主义","Materialism can't buy happiness."],
+  ["minimalism","极简主义","Minimalism reduces clutter."],
+  ["community","社区","Community ties are weakening."],
+  ["privacy","隐私","People value their privacy."],
+  ["individualism","个人主义","Individualism is on the rise."],
+  ["companionship","陪伴","Pets offer companionship."],
+  ["isolation","孤立","Loneliness can lead to isolation."],
+  ["well-being","幸福感","见 W5。" ] ]},
+ {t:"W15 · 交通与能源", w:[
+  ["transport","交通","Public transport reduces congestion."],
+  ["commute","通勤","Her commute takes an hour."],
+  ["vehicles","车辆","Electric vehicles are cleaner."],
+  ["fuel","燃料","Fuel prices keep rising."],
+  ["petrol","汽油","The car runs on petrol."],
+  ["aviation","航空","Aviation is a growing carbon source."],
+  ["railway","铁路","High-speed railways connect cities."],
+  ["freight","货运","Rail is good for freight."],
+  ["pedestrian","行人","Pedestrian zones are safer."],
+  ["cyclist","骑行者","Cyclists need protected lanes."],
+  ["congestion","拥堵","见 W6。"],
+  ["energy","能源","We need cleaner energy."],
+  ["solar","太阳能的","Solar panels cut bills."],
+  ["nuclear","核的","Nuclear power is controversial."],
+  ["efficient","高效的","Efficient engines use less fuel."],
+  ["grid","电网","The grid needs upgrading."],
+  ["hydropower","水电","Hydropower supplies electricity."],
+  ["emission","排放","见 W4。"],
+  ["carbon-neutral","碳中和","The city aims to be carbon-neutral."],
+  ["alternative","替代的","We need alternative fuels."] ]},
+ {t:"W16 · 写作高分替换词", w:[
+  ["significant","显著的","=important；a significant increase"],
+  ["crucial","关键的","=very important；a crucial factor"],
+  ["considerable","相当大的","=large；a considerable amount"],
+  ["substantial","大量的","=large；substantial evidence"],
+  ["numerous","许多的","=many；numerous studies"],
+  ["detrimental","有害的","=harmful；detrimental effects"],
+  ["beneficial","有益的","=helpful；beneficial to health"],
+  ["adverse","不利的","=negative；adverse impact"],
+  ["inevitable","不可避免的","=unavoidable；an inevitable trend"],
+  ["feasible","可行的","=possible；a feasible solution"],
+  ["viable","可行的","=workable；a viable option"],
+  ["profound","深远的","=deep；profound influence"],
+  ["pivotal","关键的","=central；a pivotal role"],
+  ["controversial","有争议的","=debatable；a controversial issue"],
+  ["alleviate","缓解","=reduce；alleviate the problem"],
+  ["mitigate","减轻","=lessen；mitigate the risk"],
+  ["exacerbate","加剧","=worsen；exacerbate the crisis"],
+  ["foster","培养","=promote；foster cooperation"],
+  ["facilitate","促进","=help；facilitate learning"],
+  ["hinder","阻碍","=block；hinder progress"] ]}
+];
+
+// 阅读文章
+const READING = [
+ {t:"城市地下空间开发（与本专业相关）", topic:"城市/基建", diff:"中等",
+  p:"As cities grow denser, land above ground becomes scarce and expensive. One solution is to build downward: underground space can house transport systems, shopping areas, storage and utilities. Many major cities, including Tokyo and London, already operate vast underground networks. Developing underground space has clear advantages. It relieves congestion on the surface and protects people from noise and weather. It can also preserve historic buildings and green spaces that would otherwise be demolished.\nHowever, underground construction is costly and technically demanding. Engineers must deal with difficult geology, groundwater and the risk of land subsidence. Ventilation, lighting and emergency evacuation also become harder below ground. Moreover, once built, underground structures are difficult and expensive to modify. Careful planning and strong safety standards are therefore essential before any project begins.",
+  q:[
+   {s:"选择题", q:"Why do cities develop underground space?", o:["To reduce construction costs","To save scarce surface land","To avoid all technical problems","To attract more tourists"], a:1},
+   {s:"选择题", q:"Which is NOT mentioned as an advantage of underground space?", o:["Reducing surface congestion","Protecting historic buildings","Lowering construction cost","Providing shelter from weather"], a:2},
+   {s:"判断题", q:"Tokyo and London both have large underground networks.", a:"TRUE"},
+   {s:"判断题", q:"Underground structures are easy to modify after construction.", a:"FALSE"},
+   {s:"填空题", q:"Engineers must manage difficult geology, groundwater and the risk of land ______.", a:"subsidence"}
+  ]},
+ {t:"气候变化与城市韧性", topic:"环境", diff:"中等",
+  p:"Climate change is increasing the frequency of extreme weather events such as floods, heatwaves and storms. Cities, where more than half of the world's population lives, are especially vulnerable. To respond, planners are promoting 'resilient cities' that can absorb shocks and recover quickly.\nResilience can be improved in several ways. Green roofs and parks absorb rainwater and cool the air. Flood barriers protect coastal districts. Early-warning systems help residents evacuate in time. In addition, building codes can be strengthened so that structures resist strong winds and earthquakes.\nCritics argue that such measures are expensive and that poorer cities cannot afford them. However, experts point out that the cost of doing nothing is far higher, as disasters destroy homes and disrupt economies. Investing in resilience is therefore not a luxury but a necessity.",
+  q:[
+   {s:"选择题", q:"What makes cities vulnerable to climate change?", o:["Their small size","High population concentration","Too many parks","Lack of money"], a:1},
+   {s:"选择题", q:"Green roofs mainly help by", o:["cooling the air and absorbing rain","blocking wind","reducing noise","creating jobs"], a:0},
+   {s:"判断题", q:"More than half of humanity lives in cities.", a:"TRUE"},
+   {s:"填空题", q:"Early-warning systems help residents ______ in time.", a:"evacuate"},
+   {s:"判断题", q:"Experts believe the cost of inaction is lower than investing in resilience.", a:"FALSE"}
+  ]},
+ {t:"人工智能与就业市场", topic:"科技", diff:"偏难",
+  p:"Artificial intelligence (AI) is transforming the labour market. Repetitive tasks in manufacturing, data entry and customer service are increasingly automated, raising fears of mass unemployment. History, however, suggests a more complex picture.\nDuring past industrial revolutions, new technology destroyed some jobs but created many others. The invention of the car, for example, reduced demand for horse-drawn transport but generated entire industries in motoring, road building and logistics. Similarly, AI may eliminate routine work while boosting demand for roles that require creativity, judgement and emotional intelligence.\nThe key challenge is the transition. Workers whose skills become obsolete need retraining, and education systems must prepare young people for a fast-changing economy. Governments and businesses share responsibility for managing this change so that the benefits of AI are widely shared.",
+  q:[
+   {s:"选择题", q:"What is the main worry about AI?", o:["It costs too much","It may cause mass unemployment","It is too slow","It uses too much energy"], a:1},
+   {s:"选择题", q:"The example of the car shows that new technology", o:["always reduces jobs","only destroys jobs","can create new industries","never changes demand"], a:2},
+   {s:"判断题", q:"AI is most likely to replace jobs requiring emotional intelligence.", a:"FALSE"},
+   {s:"填空题", q:"Workers whose skills become obsolete need ______.", a:"retraining"},
+   {s:"选择题", q:"Who should manage the transition to AI?", o:["Only governments","Only businesses","Governments and businesses","Only workers"], a:2}
+  ]},
+ {t:"在线教育的兴起", topic:"教育", diff:"中等",
+  p:"Online education has grown rapidly, especially since the pandemic forced schools and universities to move lessons onto the internet. Supporters argue that online learning offers flexibility: students can study at their own pace and access courses from anywhere in the world. It also reduces costs, since there are no travel or accommodation expenses.\nNevertheless, online education has drawbacks. It requires reliable internet access and a quiet place to study, which not all students have. Motivation can decline without the structure of a classroom, and some subjects, such as laboratory sciences, are hard to teach online. Interaction with teachers and classmates is also more limited.\nMost experts believe the future lies in blended learning, which combines the flexibility of online resources with the benefits of face-to-face teaching.",
+  q:[
+   {s:"选择题", q:"One advantage of online education is", o:["higher tuition fees","flexibility of time and place","more classroom time","better laboratory access"], a:1},
+   {s:"选择题", q:"Which subject is hard to teach online?", o:["History","Literature","Laboratory science","Mathematics"], a:2},
+   {s:"判断题", q:"Online learning requires reliable internet access.", a:"TRUE"},
+   {s:"填空题", q:"Motivation can decline without the ______ of a classroom.", a:"structure"},
+   {s:"选择题", q:"What do most experts recommend?", o:["Pure online learning","Only face-to-face teaching","Blended learning","No formal education"], a:2}
+  ]},
+ {t:"塑料污染问题", topic:"环境", diff:"中等",
+  p:"Plastic is cheap, light and durable, which is why it is used everywhere, from packaging to clothing. However, these same qualities make it an environmental threat. Plastics do not break down easily and can persist in the environment for hundreds of years.\nLarge pieces of plastic harm wildlife: animals eat them or become entangled. Even more worrying are microplastics, tiny fragments smaller than five millimetres, which have been found in oceans, soil and even drinking water. Scientists are still studying their effects on human health.\nSolutions include reducing single-use plastics, improving recycling systems and developing biodegradable alternatives. Many countries have banned plastic bags and straws, but global plastic production continues to rise, suggesting that much stronger action is needed.",
+  q:[
+   {s:"选择题", q:"Why is plastic an environmental problem?", o:["It is too expensive","It breaks down quickly","It persists for hundreds of years","It is too heavy"], a:2},
+   {s:"选择题", q:"Microplastics are", o:["larger than 5mm","tiny fragments under 5mm","a type of animal","a new kind of plastic bag"], a:1},
+   {s:"判断题", q:"Plastics have been found in drinking water.", a:"TRUE"},
+   {s:"填空题", q:"Scientists are still studying the ______ of microplastics on human health.", a:"effects"},
+   {s:"选择题", q:"Which is NOT mentioned as a solution?", o:["Reducing single-use plastics","Improving recycling","Banning all plastic","Developing biodegradable alternatives"], a:2}
+  ]},
+ {t:"全球化的利与弊", topic:"全球化", diff:"中等",
+  p:"Globalisation refers to the growing integration of economies, cultures and societies across the world. It is driven by advances in transport, communication and trade agreements.\nSupporters highlight its benefits. Globalisation allows countries to specialise in what they do best, lowering prices and expanding consumer choice. It spreads technology and ideas, and has lifted hundreds of millions of people out of poverty. Cultural exchange also enriches societies.\nCritics, however, argue that globalisation has costs. Jobs may move to countries with lower wages, causing unemployment at home. It can also increase inequality and encourage a global culture that erodes local traditions. Environmental damage is another concern, since goods are shipped over long distances. The debate is therefore not whether globalisation is good or bad, but how its benefits can be shared more fairly.",
+  q:[
+   {s:"选择题", q:"What drives globalisation?", o:["Strict borders","Advances in transport and communication","Higher tariffs","Isolation policies"], a:1},
+   {s:"选择题", q:"A benefit of globalisation is", o:["fewer consumer choices","higher prices","poverty reduction","job losses"], a:2},
+   {s:"判断题", q:"Globalisation may erode local traditions.", a:"TRUE"},
+   {s:"填空题", q:"Jobs may move to countries with lower ______.", a:"wages"},
+   {s:"选择题", q:"What is the central debate about globalisation?", o:["Whether to stop it entirely","How to share its benefits fairly","Which country leads it","Whether it exists"], a:1}
+  ]},
+ {t:"睡眠与健康", topic:"健康", diff:"中等",
+  p:"Sleep is essential for physical and mental health, yet many people do not get enough of it. Research shows that adults need seven to nine hours of sleep each night, but busy schedules, stress and the use of screens late at night often reduce this.\nPoor sleep has serious consequences. It weakens the immune system, making people more likely to fall ill. It also affects memory, concentration and mood, and has been linked to long-term problems such as obesity, diabetes and heart disease. For students, a lack of sleep can directly harm academic performance.\nExperts recommend simple habits to improve sleep: keeping a regular bedtime, avoiding caffeine in the evening, and turning off electronic devices at least an hour before bed. Creating a dark, quiet and cool bedroom also helps.",
+  q:[
+   {s:"选择题", q:"How much sleep do adults need?", o:["5-6 hours","7-9 hours","10-12 hours","4-5 hours"], a:1},
+   {s:"选择题", q:"Poor sleep can weaken the", o:["immune system","digestive system only","skeleton","hair"], a:0},
+   {s:"判断题", q:"Poor sleep has been linked to heart disease.", a:"TRUE"},
+   {s:"填空题", q:"Students who lack sleep may suffer worse ______ performance.", a:"academic"},
+   {s:"选择题", q:"Which habit improves sleep?", o:["Drinking coffee at night","Using screens in bed","Keeping a regular bedtime","Sleeping in a bright room"], a:2}
+  ]},
+ {t:"公共交通与私家车", topic:"交通", diff:"中等",
+  p:"As cities grow, the choice between public transport and private cars becomes increasingly important. Private cars offer convenience and freedom, but they also cause congestion, pollution and road accidents. In many cities, traffic jams waste hours of commuters' time every day.\nPublic transport, such as buses, trains and metros, can move large numbers of people efficiently. It produces far less pollution per passenger than cars and reduces the need for parking space. Good public transport also makes cities more accessible for those who cannot afford a car.\nTo encourage people to use public transport, cities can invest in reliable and affordable services, introduce congestion charges, and build dedicated bus lanes. Many experts argue that a well-designed public transport system is the key to a sustainable city.",
+  q:[
+   {s:"选择题", q:"A disadvantage of private cars is", o:["low convenience","causing congestion and pollution","too cheap","too slow to drive"], a:1},
+   {s:"选择题", q:"Public transport produces pollution", o:["equal to cars","more than cars","far less per passenger than cars","none at all"], a:2},
+   {s:"判断题", q:"Public transport reduces the need for parking space.", a:"TRUE"},
+   {s:"填空题", q:"Cities can introduce ______ charges to discourage driving.", a:"congestion"},
+   {s:"选择题", q:"What is the key to a sustainable city, according to experts?", o:["More car parks","A well-designed public transport system","Higher speed limits","More highways"], a:1}
+  ]}
+];
+
+// 写作：Task 2 大作文
+const WRITING_T2 = [
+ {t:"教育类：大学教育是否应免费", type:"观点类",
+  q:"Some people believe that university education should be free for everyone. To what extent do you agree or disagree?",
+  frame:"① 引言：改写题目+亮观点 ② 主体1：支持免费的理由（促进平等、培养人才） ③ 主体2：反对理由（成本高、可能降低质量） ④ 结论：折中或重申观点",
+  vocab:["tuition-free","social mobility","public investment","fund","burden","quality of teaching"],
+  model:"In my view, university education should be made more affordable rather than completely free. Free tuition would widen access and help students from poor families, boosting social mobility. However, if universities receive no tuition income, they may struggle to fund facilities and staff, which could harm the quality of teaching. A fairer approach is to offer needs-based scholarships and low-interest loans, so that no capable student is denied a place because of cost."},
+ {t:"科技类：AI 是否威胁就业", type:"讨论类",
+  q:"Some people think that artificial intelligence will bring more benefits than harms to the job market. Others disagree. Discuss both views and give your opinion.",
+  frame:"① 引言：引出争议 ② 主体1：AI 的好处（提高效率、创造新岗位） ③ 主体2：AI 的坏处（替代岗位、加剧不平等） ④ 结论：平衡观点+给建议",
+  vocab:["automate","displace","productivity","retraining","upskill","inequality"],
+  model:"On the one hand, AI can raise productivity and generate entirely new industries, just as past technologies did. On the other hand, it may displace routine jobs and widen inequality if workers are not supported. In my opinion, the overall impact depends on how governments manage the transition. The best response is investment in retraining and education, so that workers can move into roles that AI cannot easily replace."},
+ {t:"环境类：是否应限制私家车", type:"观点类",
+  q:"Some people think that governments should discourage the use of private cars in city centres. Do you agree or disagree?",
+  frame:"① 引言 ② 主体1：支持限制（减少污染、拥堵） ③ 主体2：考虑例外（郊区、行动不便者） ④ 结论",
+  vocab:["congestion","emissions","pedestrian-friendly","public transport","congestion charge","accessible"],
+  model:"I strongly agree that private cars should be discouraged in city centres. Reducing car use lowers air pollution and congestion, making cities healthier and more pleasant for pedestrians. Improved public transport and congestion charges can encourage this shift. That said, exceptions should be made for disabled people and for deliveries, so that the policy remains fair and practical."},
+ {t:"社会类：是否应该帮助陌生国家", type:"观点类",
+  q:"Some people think that rich countries should help poorer countries only if they benefit in return. Do you agree or disagree?",
+  frame:"① 引言 ② 主体1：支持援助的理由（人道主义、全球稳定） ③ 主体2：反对功利化（道义责任） ④ 结论",
+  vocab:["humanitarian","foreign aid","global stability","moral obligation","poverty","reciprocal"],
+  model:"I disagree with the view that aid should be given only for a return. Rich nations have a moral obligation to help poorer ones, since much global inequality stems from history and unfair trade. Moreover, reducing poverty abroad can improve global stability, which ultimately benefits everyone. Aid should therefore be driven by need and shared responsibility, not merely by self-interest."},
+ {t:"健康类：政府是否应管制垃圾食品", type:"观点类",
+  q:"Some people believe that governments should tax unhealthy food to improve public health. To what extent do you agree or disagree?",
+  frame:"① 引言 ② 主体1：支持征税（减少消费、补贴健康食品） ③ 主体2：反对（侵犯自由、对穷人不公平） ④ 结论",
+  vocab:["obesity","public health","levy","consumption","nudge","regressive"],
+  model:"I partly agree with taxing unhealthy food. Such a levy can reduce consumption of junk food and raise money for health programmes, helping to tackle obesity. However, these taxes are regressive, since they hit low-income families hardest. The most effective approach combines a tax with education and subsidies for healthy food, so that the policy encourages better choices without punishing the poor."},
+ {t:"家庭类：是否应花更多时间陪伴孩子", type:"观点类",
+  q:"Some parents spend very little time with their children because of work. What problems does this cause, and what can be done?",
+  frame:"① 引言 ② 主体1：问题（情感疏离、行为问题） ③ 主体2：解决办法（弹性工作、政策支持） ④ 结论",
+  vocab:["bonding","neglect","emotional development","flexible working","parental leave","well-being"],
+  model:"When parents spend little time with their children, children may feel emotionally distant and develop behavioural problems, as they lack guidance and attention. To address this, companies could offer flexible working hours and governments could extend parental leave. Such measures allow parents to balance work and family, which benefits both the child's development and society as a whole."}
+];
+
+// 写作：Task 1 小作文
+const WRITING_T1 = [
+ {t:"柱状图：城市人口变化", type:"Bar chart",
+  q:"The chart shows the percentage of people living in urban areas in four countries between 1990 and 2020. Summarise the information.",
+  frame:"① 引言：改写题目（一句话） ② 概述：总趋势（2 句话） ③ 细节段1：上升最明显的 ④ 细节段2：其余/对比",
+  vocab:["increased steadily","rose sharply","saw a gradual rise","accounted for","the highest proportion","compared with"]},
+ {t:"折线图：能源消耗", type:"Line graph",
+  q:"The graph shows changes in energy consumption from three sources between 1980 and 2010. Summarise the information.",
+  frame:"① 引言 ② 概述：整体趋势与最大变化 ③ 细节段1：上升项 ④ 细节段2：下降/波动项",
+  vocab:["fluctuated","peaked at","declined gradually","remained stable","overtook","over the period"]},
+ {t:"饼图：出行方式占比", type:"Pie chart",
+  q:"The pie charts show the ways people travel to work in a city in 1990 and 2010. Summarise the information.",
+  frame:"① 引言 ② 概述：谁增谁减 ③ 细节段1：占比最大项 ④ 细节段2：其余项变化",
+  vocab:["the majority of","a significant proportion","accounted for","the figure for","dropped to","doubled"]},
+ {t:"流程图：水循环", type:"Process diagram",
+  q:"The diagram shows the water cycle. Summarise the information by selecting and reporting the main features.",
+  frame:"① 引言：改写 ② 概述：整体分几步 ③ 按顺序描述每个阶段（用连接词） ④ 注意用一般现在时+被动",
+  vocab:["initially","subsequently","evaporates","condenses","is released","finally"]}
+];
+
+// 口语
+const SPEAKING = {
+ p1:[
+  {q:"Do you live in a house or an apartment?", s:"简单说明住哪+喜欢的原因。范例：I live in a flat near my university. I like it because it is quiet and convenient for my studies."},
+  {q:"What is your favourite subject at university?", s:"点题+理由+例子。范例：My favourite subject is urban planning, because it shows how cities are designed and how underground space can be used."},
+  {q:"Do you prefer studying in the morning or at night?", s:"明确选择+原因。范例：I prefer the morning, as my mind is fresher and I can concentrate better before the day gets busy."},
+  {q:"Do you like reading?", s:"肯定+读什么+为什么。范例：Yes, I enjoy reading news and articles online, because they help me learn new vocabulary."},
+  {q:"What do you usually do at weekends?", s:"列出活动+感受。范例：I usually review my lessons, play sports and meet friends. It helps me relax after a busy week."},
+  {q:"Do you enjoy using social media?", s:"态度+利弊一句。范例：I use it to keep in touch with friends, but I try not to spend too much time on it."},
+  {q:"How do you usually travel around your city?", s:"方式+原因。范例：I mostly take the metro, because it is fast and avoids traffic congestion."},
+  {q:"Do you like watching movies?", s:"喜欢+类型+为什么。范例：Yes, I like documentaries, as they are both entertaining and informative."}
+ ],
+ p2:[
+  {c:"描述一个你敬佩的人", h:"是谁 / 怎么认识 / 为什么敬佩。要点：人物品质（hardworking, inspiring）+ 具体事例。结尾总结影响。"},
+  {c:"描述一个你去过的城市", h:"哪里 / 什么时候去 / 做了什么 / 为什么印象深刻。用感官描述（景色、食物、人）。"},
+  {c:"描述一项你想学习的技能", h:"什么技能 / 为什么想学 / 怎么学 / 学会后做什么。可选：编程、外语、乐器。"},
+  {c:"描述一个你喜欢的传统节日", h:"什么节日 / 怎么庆祝 / 和谁一起 / 为什么重要。联系家庭与文化。"},
+  {c:"描述一个帮助过你的人", h:"谁 / 什么时候 / 怎么帮助 / 结果如何。强调感激与影响。"},
+  {c:"描述一个让你感到困难的任务", h:"什么任务 / 为什么难 / 你怎么克服 / 学到什么。用过去时叙述。"},
+  {c:"描述一个你常去的地方", h:"哪里 / 多常去 / 做什么 / 为什么喜欢。可与学习或休闲结合。"},
+  {c:"描述一项你常做的运动", h:"什么运动 / 多久一次 / 和谁 / 为什么喜欢。联系健康与放松。"}
+ ],
+ p3:[
+  {q:"Why do some people prefer to live in big cities?", s:"机会多（工作、教育）+ 生活便利，但也要提拥堵和高成本。范例：Big cities offer more jobs and services, but they also bring congestion and high living costs."},
+  {q:"How can cities become more sustainable?", s:"发展公共交通、绿色建筑、可再生能源、垃圾回收。举例说明。"},
+  {q:"Is it important to protect traditional culture?", s:"是的，文化是身份的一部分；可通过教育、旅游、政府资助保护。"},
+  {q:"What effect does technology have on people's daily lives?", s:"便利（沟通、购物）+ 依赖与隐私问题。平衡回答。"},
+  {q:"Should young people live with their parents after graduation?", s:"视情况：经济考虑 vs 独立性。给出利弊。"},
+  {q:"How can the government encourage people to use public transport?", s:"降价、增加班次、限行/拥堵费、宣传环保。"},
+  {q:"Do you think people work harder now than before?", s:"生活节奏快、竞争激烈，但科技也提高了效率。分析原因。"},
+  {q:"What can schools do to help students prepare for the future?", s:"培养批判性思维、沟通能力、实践技能，而非只背知识。"}
+ ]
+};
+
+// 听力 16 周计划
+const LISTEN_PLAN = [
+ "W1：熟悉题型，每天精听 BBC 6 Minute English 1 篇，练 Section 1 数字/日期听写。",
+ "W2：精听+泛听各 1 段，练 Section 2 场景（租房/旅游/图书馆）。",
+ "W3：练 Section 3 学术对话，抓转折词与同义替换。",
+ "W4：练 Section 4 学术讲座，跟读模仿语调。",
+ "W5：开始整套听力（剑雅 1 套），错题精听 3 遍。",
+ "W6：整套听力+错题本，重点练地图题。",
+ "W7：整套听力+填空专项，注意单复数。",
+ "W8：整套听力+跟读，保持 1.2 倍速泛听。",
+ "W9：每周 2 套真题听力，限时 30 分钟。",
+ "W10：每周 2 套，总结错因（拼写/漏听/同义替换）。",
+ "W11：每周 2 套，突破 Section 3/4。",
+ "W12：每周 2 套，稳定正确率到 30+/40。",
+ "W13：连续模考，听力目标 7.5+（对 33 题以上）。",
+ "W14：查漏：只练错题题型。",
+ "W15：弱项专项+1.25 倍速精听。",
+ "W16：全真模拟，保持状态，考前不再刷难题。"
+];
+
+/* ============ 周计划生成 ============ */
+const PHASES = [
+ {n:1, name:"① 基础巩固", wk:"W1–W4"},
+ {n:2, name:"② 强化提升", wk:"W5–W8"},
+ {n:3, name:"③ 真题冲刺", wk:"W9–W12"},
+ {n:4, name:"④ 模考查漏", wk:"W13–W16"}
+];
+const WEEK_THEME = [
+ "摸底定位 + 词汇启动", "听力S1 + 阅读判断题", "听力S2 + 阅读匹配", "听力S3 + 阅读选择",
+ "写作Task1入门 + 听力S4", "写作Task2结构 + 阅读Heading", "写作连贯 + 阅读Summary", "写作地图/流程 + 整套听力",
+ "真题冲刺（每周2套）", "真题冲刺（每周2套）", "真题冲刺（每周2套）", "真题冲刺（每周2套）",
+ "模考查漏：弱项定位", "模考查漏：专项强化", "模考查漏：模板内化", "考前冲刺：全真模拟"
+];
+
+function buildWeeks(){
+  const weeks=[];
+  for(let i=0;i<16;i++){
+    const phase = i<4?1:(i<8?2:(i<12?3:4));
+    const vocabT = VOCAB[i].t;
+    const days=[];
+    for(let d=0;d<7;d++){
+      // 轮换主技能：周一/四=阅读，周二/五=写作，周三/六=口语，周日=模考复盘
+      const main = (d===0||d===3)?"reading":(d===1||d===4)?"writing":(d===2||d===5)?"speaking":"mock";
+      const tasks = {
+        vocab: "📖 背「"+vocabT.replace(/^W\d+ · /,"")+"」当周核心词 + 单词App 20 新词",
+        listening: (phase===1? "精听 BBC/TED 1段（五步法）+ 练 "+["Section1 数字日期","Section2 日常场景","Section3 学术对话","Section4 学术讲座"][Math.min(3, i%4)] : "整套听力限时训练 + 错题精听"),
+        reading: main==="reading" ? "主练：阅读 1 篇限时 18 分钟 + 精析错题" : (main==="mock"?"阅读 1 篇保持手感":"阅读泛读 1 篇（不求全对，练定位）"),
+        writing: main==="writing" ? "主练：按框架写 1 篇大作文/小作文 + 对照范文修改" : (main==="mock"?"写作 1 篇限时 40 分钟":"积累 5 个高分句型/词组"),
+        speaking: main==="speaking" ? "主练：Part1/2/3 各 1 题，录音→回听→重说" : (main==="mock"?"口语 Part2 一题，录音自我评估":"口语跟读 5 分钟，练流利度")
+      };
+      if(main==="mock"){
+        tasks.reading="📝 周日模考：完整做 1 套（听+读）并复盘错题";
+        tasks.writing="📝 模考写作：Task1+Task2 限时 60 分钟";
+        tasks.speaking="📝 模考口语：Part1/2/3 全套录音";
+      }
+      days.push({d:d+1, main:main, tasks:tasks});
+    }
+    weeks.push({n:i+1, phase:phase, theme:WEEK_THEME[i], vocabT:vocabT, days:days});
+  }
+  return weeks;
+}
+const WEEKS = buildWeeks();
+
+/* ============ 状态 ============ */
+const LS_KEY="ielts_wb_v1";
+let state = loadState();
+let curWeek = 0, curDay = 0;      // 今日视图的周/天
+let vocabWeekIdx = 0, vocabWordIdx = 0;
+let flashFlipped = false;
+
+function defaultState(){
+  const today = new Date();
+  const y=today.getFullYear(), m=String(today.getMonth()+1).padStart(2,"0"), dd=String(today.getDate()).padStart(2,"0");
+  return {startDate: y+"-"+m+"-"+dd, done:{}, vocab:{}};
+}
+function loadState(){
+  try{ const s=localStorage.getItem(LS_KEY); if(s) return Object.assign(defaultState(), JSON.parse(s)); }catch(e){}
+  return defaultState();
+}
+function saveState(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(state)); }catch(e){} }
+
+function dayId(w,d){ return "w"+(w+1)+"-d"+d; }
+function taskKey(w,d,mod){ return dayId(w,d)+"-"+mod; }
+function isDone(w,d,mod){ return !!state.done[taskKey(w,d,mod)]; }
+function toggle(w,d,mod){
+  const k=taskKey(w,d,mod);
+  if(state.done[k]) delete state.done[k]; else state.done[k]=1;
+  saveState(); renderToday(); renderStats();
+}
+
+/* ============ 今日视图 ============ */
+function computeToday(){
+  const s = new Date(state.startDate+"T00:00:00");
+  const now = new Date(); now.setHours(0,0,0,0);
+  const diff = Math.floor((now-s)/86400000);
+  const total = Math.max(0, diff);
+  const w = Math.min(15, Math.floor(total/7));
+  const d = Math.min(6, total%7);
+  return {w,d,total};
+}
+let viewOffset=0;
+function shiftDay(n){ viewOffset+=n; renderToday(); }
+function goToday(){ viewOffset=0; renderToday(); }
+
+function renderToday(){
+  const t=computeToday();
+  let idx = t.total + viewOffset;
+  if(idx<0) idx=0;
+  const w = Math.min(15, Math.floor(idx/7));
+  const d = idx%7;
+  const week = WEEKS[w], day = week.days[d];
+  const ph = PHASES[week.phase-1];
+  document.getElementById("headerBadge").textContent = "第 "+week.n+" 周 · 第 "+day.d+" 天";
+  document.getElementById("todayLabel").textContent = ph.name+" "+ph.wk+" · 主题："+week.theme+" · "+(viewOffset===0?"（今天）":(viewOffset<0?"（补做）":"（提前做）"));
+  const mods=["vocab","listening","reading","writing","speaking"];
+  let doneCount=0;
+  mods.forEach(m=>{ if(isDone(w,d,m)) doneCount++; });
+  const pct=Math.round(doneCount/5*100);
+  document.getElementById("todayPct").textContent=pct+"%";
+  document.getElementById("todayBar").style.width=pct+"%";
+
+  const colors={vocab:"var(--vocab)",listening:"var(--listen)",reading:"var(--read)",writing:"var(--write)",speaking:"var(--speak)"};
+  const names={vocab:"单词",listening:"听力",reading:"阅读",writing:"写作",speaking:"口语"};
+  const dur={vocab:"15分钟",listening:"20分钟",reading:"25分钟",writing:"25分钟",speaking:"15分钟"};
+  let html="";
+  mods.forEach(m=>{
+    const done=isDone(w,d,m);
+    html+='<div class="task'+(done?' done':'')+'" >'+
+      '<div class="ck" onclick="toggle('+w+','+d+',\''+m+'\')">'+(done?'✓':'')+'</div>'+
+      '<div class="t-body"><div class="t-title"><span class="t-tag" style="background:'+colors[m]+'">'+names[m]+'</span>'+names[m]+' · '+dur[m]+'</div>'+
+      '<div class="t-desc">'+day.tasks[m]+'</div></div></div>';
+  });
+  document.getElementById("todayTasks").innerHTML=html;
+
+  const tips=[
+    "💡 <b>碎片化安排</b>：单词放早晚通勤，听力放午休，阅读/写作放自习，口语放睡前，各 15–25 分钟。",
+    "💡 <b>7.0 关键</b>：听力和阅读最容易提分，先稳这两科到 7.5，再攻写作口语到 6.5，总分即可 7.0。",
+    "💡 <b>口语</b>：每天开口说，哪怕 5 分钟。录音回听比反复默读有效 10 倍。",
+    "💡 <b>写作</b>：别只背模板，要把「框架+高分词」内化成自己的表达。",
+    "💡 <b>坚持</b>：连续 16 周每天 1.5–2 小时，比周末猛学一整天更有效。"
+  ];
+  document.getElementById("tipCard").innerHTML='<div class="tip">'+tips[d%tips.length]+'</div>';
+}
+
+/* ============ 单词 ============ */
+function renderVocab(){
+  const sel=document.getElementById("vocabWeek");
+  let opts="";
+  VOCAB.forEach((v,i)=>{ opts+='<option value="'+i+'"'+(i===vocabWeekIdx?' selected':'')+'>'+v.t+'</option>'; });
+  sel.innerHTML=opts;
+  renderWord();
+  renderVocabList();
+}
+function renderWord(){
+  const list=VOCAB[vocabWeekIdx].w;
+  const cur=list[vocabWordIdx];
+  document.getElementById("fw").textContent=cur[0];
+  document.getElementById("fcn").textContent=cur[1];
+  document.getElementById("feg").textContent=cur[2];
+  flashFlipped=false;
+  document.getElementById("flash").classList.remove("flip");
+  const known = isVocabKnown(vocabWeekIdx, vocabWordIdx);
+  document.getElementById("knownBtn").textContent = known?"✓ 已掌握（点击取消）":"标记：已掌握";
+  document.getElementById("vocabCount").textContent="本周 "+(vocabWordIdx+1)+" / "+list.length+" 个";
+  updateVocabBar();
+}
+function flip(){ flashFlipped=!flashFlipped; document.getElementById("flash").classList.toggle("flip", flashFlipped); }
+function prevWord(){ vocabWordIdx=(vocabWordIdx-1+VOCAB[vocabWeekIdx].w.length)%VOCAB[vocabWeekIdx].w.length; renderWord(); }
+function nextWord(){ vocabWordIdx=(vocabWordIdx+1)%VOCAB[vocabWeekIdx].w.length; renderWord(); }
+function vk(w,i){ return "wk"+w+"-i"+i; }
+function isVocabKnown(w,i){ return !!state.vocab[vk(w,i)]; }
+function toggleVocabKnown(){
+  const k=vk(vocabWeekIdx, vocabWordIdx);
+  if(state.vocab[k]) delete state.vocab[k]; else state.vocab[k]=1;
+  saveState(); renderWord(); renderVocabList(); renderStats();
+}
+function updateVocabBar(){
+  const list=VOCAB[vocabWeekIdx].w;
+  let c=0; list.forEach((_,i)=>{ if(isVocabKnown(vocabWeekIdx,i)) c++; });
+  document.getElementById("vocabBar").style.width=Math.round(c/list.length*100)+"%";
+}
+function renderVocabList(){
+  const list=VOCAB[vocabWeekIdx].w;
+  let html="";
+  list.forEach((w,i)=>{
+    const known=isVocabKnown(vocabWeekIdx,i);
+    html+='<div style="padding:6px 0;border-bottom:1px dashed #eee;cursor:pointer" onclick="vocabWordIdx='+i+';renderWord()">'+
+      '<span style="font-weight:600;color:'+(known?'var(--good)':'var(--text)')+'">'+(known?'✓ ':'')+w[0]+'</span> '+
+      '<span class="muted">'+w[1]+'</span></div>';
+  });
+  document.getElementById("vocabList").innerHTML=html;
+}
+document.getElementById("vocabWeek").addEventListener("change", function(){ vocabWeekIdx=parseInt(this.value); vocabWordIdx=0; renderWord(); renderVocabList(); });
+
+/* ============ 听力 ============ */
+function renderListening(){
+  const t=computeToday();
+  let html="";
+  LISTEN_PLAN.forEach((p,i)=>{
+    const cur=(i===t.w);
+    html+='<div style="padding:7px 0;font-size:13px;'+(cur?'background:var(--brand-soft);border-radius:8px;padding-left:8px;font-weight:600;':'')+'">'+ (cur?'👉 ':'') + p +'</div>';
+  });
+  document.getElementById("listenPlan").innerHTML=html;
+  document.getElementById("listenLog").innerHTML=
+    '<p class="note">今天听力任务已在上方「今日任务」中。完成每日听力后在今日任务页勾选打卡。建议准备一个<b>听力错题本</b>，记录：错因（拼写/漏听/同义替换）+ 原文 + 正确答案。</p>';
+}
+
+/* ============ 阅读 ============ */
+function renderReadList(){
+  let html="";
+  READING.forEach((r,i)=>{
+    html+='<div class="card" style="cursor:pointer" onclick="openRead('+i+')">'+
+      '<div class="row"><div><b>'+r.t+'</b><div class="muted">'+r.topic+' · 难度：'+r.diff+' · '+r.q.length+' 题</div></div><span style="font-size:18px">›</span></div></div>';
+  });
+  document.getElementById("readList").innerHTML=html;
+  document.getElementById("readDetail").classList.add("hidden");
+}
+function openRead(i){
+  const r=READING[i];
+  let qhtml="";
+  r.q.forEach((qq,qi)=>{
+    if(qq.s==="选择题"){
+      let o="";
+      qq.o.forEach((opt,oi)=>{ o+='<div class="opt" onclick="ansRead('+i+','+qi+','+oi+',this)">'+String.fromCharCode(65+oi)+'. '+opt+'</div>'; });
+      qhtml+='<div style="margin:12px 0"><b>'+(qi+1)+'. '+qq.q+'</b>'+o+'</div>';
+    }else if(qq.s==="判断题"){
+      qhtml+='<div style="margin:12px 0"><b>'+(qi+1)+'. [判断] '+qq.q+'</b>'+
+        '<div class="opt" onclick="ansRead('+i+','+qi+',0,this)">TRUE</div>'+
+        '<div class="opt" onclick="ansRead('+i+','+qi+',1,this)">FALSE</div></div>';
+    }else{
+      qhtml+='<div style="margin:12px 0"><b>'+(qi+1)+'. [填空] '+qq.q+'</b>'+
+        '<div style="margin-top:6px"><button class="btn ghost sm" onclick="showFill('+i+','+qi+',this)">显示答案</button></div></div>';
+    }
+  });
+  document.getElementById("readDetail").innerHTML=
+    '<div class="card"><div class="row"><h2 style="margin:0">'+r.t+'</h2><button class="btn ghost sm" onclick="closeRead()">‹ 返回</button></div>'+
+    '<div style="font-size:14px;white-space:pre-line;margin:10px 0;line-height:1.8">'+r.p+'</div>'+
+    '<hr style="border:none;border-top:1px solid var(--line)">'+qhtml+'</div>';
+  document.getElementById("readList").classList.add("hidden");
+  document.getElementById("readDetail").classList.remove("hidden");
+  window.scrollTo(0,0);
+}
+function closeRead(){
+  document.getElementById("readList").classList.remove("hidden");
+  document.getElementById("readDetail").classList.add("hidden");
+}
+function ansRead(ri,qi,oi,el){
+  const r=READING[ri], q=r.q[qi];
+  const correct = q.s==="判断题" ? (q.a=== (oi===0?"TRUE":"FALSE")) : (oi===q.a);
+  const opts=el.parentElement.querySelectorAll(".opt");
+  opts.forEach((o,idx)=>{
+    o.classList.remove("sel","right","wrong");
+    if(idx===oi) o.classList.add(correct?"right":"wrong");
+    else if(q.s==="选择题" && idx===q.a) o.classList.add("right");
+  });
+  if(!correct){ el.textContent+="  ✗"; }
+}
+function showFill(ri,qi,btn){
+  const a=READING[ri].q[qi].a;
+  btn.outerHTML='<div class="answer">答案：<b>'+a+'</b></div>';
+}
+
+/* ============ 写作 ============ */
+function renderWriteList(){
+  let html='<div class="sec-title">Task 2 · 大作文（40分钟 / 250词）</div>';
+  WRITING_T2.forEach((w,i)=>{ html+='<div class="card" style="cursor:pointer" onclick="openWrite(\'t2\','+i+')"><b>'+w.t+'</b><div class="muted">'+w.type+'</div></div>'; });
+  html+='<div class="sec-title">Task 1 · 小作文（20分钟 / 150词）</div>';
+  WRITING_T1.forEach((w,i)=>{ html+='<div class="card" style="cursor:pointer" onclick="openWrite(\'t1\','+i+')"><b>'+w.t+'</b><div class="muted">'+w.type+'</div></div>'; });
+  document.getElementById("writeList").innerHTML=html;
+  document.getElementById("writeDetail").classList.add("hidden");
+}
+function openWrite(kind,i){
+  const w = kind==="t2"?WRITING_T2[i]:WRITING_T1[i];
+  let extra="";
+  if(kind==="t2"){ extra='<div class="answer"><b>参考范文（主体段示例）：</b><br>'+w.model+'</div>'; }
+  document.getElementById("writeDetail").innerHTML=
+    '<div class="card"><div class="row"><h2 style="margin:0">'+w.t+'</h2><button class="btn ghost sm" onclick="closeWrite()">‹ 返回</button></div>'+
+    '<p style="font-size:14px"><b>题目：</b>'+w.q+'</p>'+
+    '<div class="tip"><b>答题框架：</b>'+w.frame+'</div>'+
+    '<div class="answer"><b>高分词汇/句型：</b><br>'+w.vocab.map(v=>'<code>'+v+'</code>').join(' ')+'</div>'+
+    extra+'</div>';
+  document.getElementById("writeList").classList.add("hidden");
+  document.getElementById("writeDetail").classList.remove("hidden");
+  window.scrollTo(0,0);
+}
+function closeWrite(){
+  document.getElementById("writeList").classList.remove("hidden");
+  document.getElementById("writeDetail").classList.add("hidden");
+}
+
+/* ============ 口语 ============ */
+function renderSpeaking(){
+  let h1="";
+  SPEAKING.p1.forEach(x=>{ h1+='<details><summary>'+x.q+'</summary><div class="note">'+x.s+'</div></details>'; });
+  document.getElementById("speak1").innerHTML=h1;
+  let h2="";
+  SPEAKING.p2.forEach(x=>{ h2+='<details><summary>'+x.c+'</summary><div class="note">思路：'+x.h+'</div></details>'; });
+  document.getElementById("speak2").innerHTML=h2;
+  let h3="";
+  SPEAKING.p3.forEach(x=>{ h3+='<details><summary>'+x.q+'</summary><div class="note">'+x.s+'</div></details>'; });
+  document.getElementById("speak3").innerHTML=h3;
+}
+
+/* ============ 计划 ============ */
+function renderPlan(){
+  document.getElementById("startDate").value=state.startDate;
+  let html="", lastPhase=0;
+  WEEKS.forEach((wk)=>{
+    if(wk.phase!==lastPhase){ html+='<div class="phase-head">'+PHASES[wk.phase-1].name+'（'+PHASES[wk.phase-1].wk+'）</div>'; lastPhase=wk.phase; }
+    const t=computeToday();
+    const isCur=(wk.n-1===t.w);
+    html+='<div class="weekline" style="'+(isCur?'background:var(--brand-soft);padding:10px 8px;border-radius:8px;':'')+'">'+
+      '<span><b>W'+wk.n+'</b> · '+wk.theme+'</span><span class="muted">'+(isCur?'当前周':'')+'</span></div>';
+  });
+  document.getElementById("planBody").innerHTML='<div class="card">'+html+'</div>';
+}
+function setStart(){
+  const v=document.getElementById("startDate").value;
+  if(v){ state.startDate=v; saveState(); renderToday(); renderPlan(); renderStats(); }
+}
+
+/* ============ 统计 ============ */
+function renderStats(){
+  let total=0;
+  for(let w=0;w<16;w++) for(let d=0;d<7;d++) for(const m of ["vocab","listening","reading","writing","speaking"]) if(isDone(w,d,m)) total++;
+  document.getElementById("stTotal").textContent=total;
+  document.getElementById("stBar").style.width=Math.min(100, Math.round(total/(16*7*5)*100))+"%";
+  document.getElementById("stOverall").textContent="总任务 "+(16*7*5)+" 项，已完成 "+total+" 项（"+Math.round(total/(16*7*5)*100)+"%）。坚持就是胜利！";
+  // 词汇
+  let wc=0; for(const k in state.vocab) if(state.vocab[k]) wc++;
+  document.getElementById("stWords").textContent=wc;
+  // 连续打卡
+  const t=computeToday(); let streak=0;
+  for(let i=t.total;i>=0;i--){ const w=Math.min(15,Math.floor(i/7)), d=i%7; let any=0; for(const m of ["vocab","listening","reading","writing","speaking"]) if(isDone(w,d,m)) any=1; if(any) streak++; else break; }
+  document.getElementById("stStreak").textContent=streak;
+  // 模块完成度
+  const mods=[["vocab","单词",'var(--vocab)'],["listening","听力",'var(--listen)'],["reading","阅读",'var(--read)'],["writing","写作",'var(--write)'],["speaking","口语",'var(--speak)']];
+  let mhtml="";
+  mods.forEach(m=>{
+    let c=0; for(let w=0;w<16;w++) for(let d=0;d<7;d++) if(isDone(w,d,m[0])) c++;
+    const p=Math.round(c/(16*7)*100);
+    mhtml+='<div style="margin-bottom:12px"><div class="row"><span style="font-size:13px"><span class="mod-pill" style="background:'+m[2]+'"></span>'+m[1]+'</span><span class="muted">'+p+'%</span></div><div class="bar"><i style="width:'+p+'%;background:'+m[2]+'"></i></div></div>';
+  });
+  document.getElementById("stModules").innerHTML=mhtml;
+}
+function resetAll(){
+  if(confirm("确定清空全部学习进度吗？此操作不可恢复。")){ state=defaultState(); saveState(); renderAll(); }
+}
+
+/* ============ 导出/导入进度 ============ */
+function toB64(str){ const bytes=new TextEncoder().encode(str); let bin=""; for(let i=0;i<bytes.length;i++) bin+=String.fromCharCode(bytes[i]); return btoa(bin); }
+function fromB64(b64){ const bin=atob(b64); const bytes=new Uint8Array(bin.length); for(let i=0;i<bin.length;i++) bytes[i]=bin.charCodeAt(i); return new TextDecoder().decode(bytes); }
+function renderAll(){ renderToday(); renderVocab(); renderListening(); renderReadList(); renderWriteList(); renderSpeaking(); renderPlan(); renderStats(); }
+function setMsg(s){ document.getElementById("syncMsg").textContent = s; }
+function exportProgress(){
+  const code = "IELTS1:" + toB64(JSON.stringify(state));
+  const ta = document.getElementById("exportBox");
+  ta.value = code;
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(code).then(function(){ setMsg("✅ 已复制到剪贴板，去另一台设备粘贴即可"); }).catch(function(){ manualCopy(ta); });
+  } else { manualCopy(ta); }
+}
+function manualCopy(ta){ ta.focus(); ta.select(); try{ document.execCommand("copy"); setMsg("✅ 已复制到剪贴板"); }catch(e){ setMsg("请长按上方文字框，手动「全选 → 复制」"); } }
+function importProgress(){
+  const code = document.getElementById("importBox").value.trim();
+  if(!code || code.indexOf("IELTS1:")!==0){ setMsg("❌ 进度码无效，请确认已完整复制"); return; }
+  try{
+    const data = JSON.parse(fromB64(code.slice(7)));
+    if(!data || typeof data!=="object" || (data.done===undefined && data.vocab===undefined)) throw new Error("bad");
+    state.done = Object.assign({}, state.done, data.done||{});
+    state.vocab = Object.assign({}, state.vocab, data.vocab||{});
+    if(data.startDate) state.startDate = data.startDate;
+    saveState(); renderAll();
+    setMsg("✅ 导入成功，进度已合并（不会覆盖已有打卡）");
+  }catch(e){ setMsg("❌ 导入失败：进度码格式不正确"); }
+}
+
+/* ============ 导航 ============ */
+function switchView(v){
+  document.querySelectorAll("nav.tabs button").forEach(b=>b.classList.toggle("on", b.dataset.v===v));
+  ["today","vocab","listen","read","write","speak","plan","stats"].forEach(x=>{
+    document.getElementById("view-"+x).classList.toggle("hidden", x!==v);
+  });
+  window.scrollTo(0,0);
+}
+document.getElementById("tabs").addEventListener("click",e=>{
+  const b=e.target.closest("button"); if(b) switchView(b.dataset.v);
+});
+
+/* ============ 启动 ============ */
+function init(){
+  renderToday();
+  renderVocab();
+  renderListening();
+  renderReadList();
+  renderWriteList();
+  renderSpeaking();
+  renderPlan();
+  renderStats();
+}
+init();
+</script>
+</body>
+</html>
